@@ -6,7 +6,7 @@
 /*   By: joao-alm <joao-alm@student.42luxembourg    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/03 19:48:28 by joao-alm          #+#    #+#             */
-/*   Updated: 2025/11/05 15:59:37 by joao-alm         ###   ########.fr       */
+/*   Updated: 2025/11/05 17:35:53 by joao-alm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,7 +82,7 @@ void	render_scene(t_scene *scene, t_mlx *mlx)
 			hit = find_closest_hit(&ray, scene);
 			if (hit.hit)
 			{
-				color = calculate_lighting(scene, &hit);
+				color = calculate_lighting(scene, &hit, scene->camera.pos);
 				set_pixel(&mlx->img, x, y, color_to_int(color));
 			}
 		}

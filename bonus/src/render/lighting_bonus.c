@@ -6,7 +6,7 @@
 /*   By: joao-alm <joao-alm@student.42luxembourg    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/05 14:54:43 by joao-alm          #+#    #+#             */
-/*   Updated: 2025/11/05 17:27:43 by joao-alm         ###   ########.fr       */
+/*   Updated: 2025/11/05 17:52:01 by joao-alm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,11 +58,34 @@ t_color	calculate_diffuse(t_light *light, t_vec3 hit_point, t_vec3 normal,
 	return (diffuse_contribution);
 }
 
-t_color	calculate_lighting(t_scene *scene, t_hit *hit)
+t_color	calculate_specular(t_light *light, t_vec3 hit_point, t_vec3 normal,
+		t_material *mat, t_vec3 cam_pos)
+{
+	t_vec3	light_dir;
+	t_vec3	view_dir;
+	t_vec3	reflect_dir;
+	double	spec;
+	t_color	specular_contribution;
+
+	light_dir = vec3_normalize(vec3_sub(light->pos, hit_point));
+	view_dir = vec3_normalize(vec3_sub(cam_pos, hit_point));
+	reflect_dir = vec3_sub(vec3_scale(normal, 2.0 * vec3_dot(normal,
+					light_dir)), light_dir);
+	reflect_dir = vec3_normalize(reflect_dir);
+	spec = vec3_dot(view_dir, reflect_dir);
+	if (spec < 0)
+		spec = 0;
+	spec = pow(spec, mat->shininess) * mat->specular * light->brightness;
+	specular_contribution = color_scale(light->color, spec);
+	return (specular_contribution);
+}
+
+t_color	calculate_lighting(t_scene *scene, t_hit *hit, t_vec3 cam_pos)
 {
 	t_color	final_color;
 	t_color	ambient;
 	t_color	diffuse;
+	t_color	specular;
 	t_color	object_color;
 	int		i;
 
@@ -76,7 +99,10 @@ t_color	calculate_lighting(t_scene *scene, t_hit *hit)
 		{
 			diffuse = calculate_diffuse(&scene->lights[i], hit->point,
 					hit->normal, object_color);
+			specular = calculate_specular(&scene->lights[i], hit->point,
+					hit->normal, &hit->object->material, cam_pos);
 			final_color = color_add(final_color, diffuse);
+			final_color = color_add(final_color, specular);
 		}
 		i++;
 	}
