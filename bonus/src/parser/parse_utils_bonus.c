@@ -6,7 +6,7 @@
 /*   By: joao-alm <joao-alm@student.42luxembourg    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/03 14:25:00 by joao-alm          #+#    #+#             */
-/*   Updated: 2025/11/03 18:30:24 by joao-alm         ###   ########.fr       */
+/*   Updated: 2025/11/05 17:29:43 by joao-alm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,11 +35,15 @@ int	parse_vec3(char *str, t_vec3 *vec)
 int	parse_color(char *str, t_color *color)
 {
 	char	**rgb;
+	char	*semicolon;
 	int		result;
 	int		r;
 	int		g;
 	int		b;
 
+	semicolon = ft_strchr(str, ';');
+	if (semicolon)
+		*semicolon = '\0';
 	rgb = ft_split(str, ",");
 	if (!rgb || !rgb[0] || !rgb[1] || !rgb[2] || rgb[3])
 	{

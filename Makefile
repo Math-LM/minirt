@@ -6,7 +6,7 @@
 #    By: joao-alm <joao-alm@student.42luxembourg    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/10/24 14:08:21 by joao-alm          #+#    #+#              #
-#    Updated: 2025/11/05 16:28:23 by joao-alm         ###   ########.fr        #
+#    Updated: 2025/11/05 17:27:42 by joao-alm         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -41,12 +41,14 @@ BPARSER	= parser_bonus.c \
 		  parse_elements_bonus.c \
 		  parse_objects_bonus.c \
 		  parse_utils_bonus.c \
-		  parse_validation_bonus.c
+		  parse_validation_bonus.c \
+		  parse_options_bonus.c
 BPARSER	:= $(addprefix parser/, $(BPARSER))
 
 BRENDER	= render_bonus.c \
 		  lighting_bonus.c \
 		  find_closest_hit_bonus.c \
+		  pattern_bonus.c \
 		  cylinder/hit_cylinder_bonus.c \
 		  cylinder/intersect_cylinder_bonus.c \
 		  plane/hit_plane_bonus.c \

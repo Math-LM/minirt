@@ -6,7 +6,7 @@
 /*   By: joao-alm <joao-alm@student.42luxembourg    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/03 18:22:20 by joao-alm          #+#    #+#             */
-/*   Updated: 2025/11/05 14:31:05 by joao-alm         ###   ########.fr       */
+/*   Updated: 2025/11/05 17:27:43 by joao-alm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,6 +64,8 @@ typedef struct s_material
 	double			specular;
 	double			shininess;
 	t_pattern		pattern;
+	double			pat_scale;
+	int				pat_type;
 }					t_material;
 
 typedef struct s_object

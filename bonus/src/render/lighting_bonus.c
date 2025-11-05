@@ -6,7 +6,7 @@
 /*   By: joao-alm <joao-alm@student.42luxembourg    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/05 14:54:43 by joao-alm          #+#    #+#             */
-/*   Updated: 2025/11/05 16:23:30 by joao-alm         ###   ########.fr       */
+/*   Updated: 2025/11/05 17:27:43 by joao-alm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,9 +63,11 @@ t_color	calculate_lighting(t_scene *scene, t_hit *hit)
 	t_color	final_color;
 	t_color	ambient;
 	t_color	diffuse;
+	t_color	object_color;
 	int		i;
 
-	ambient = calculate_ambient(&scene->ambient, hit->object->material.color);
+	object_color = get_pattern_color(hit);
+	ambient = calculate_ambient(&scene->ambient, object_color);
 	final_color = ambient;
 	i = 0;
 	while (i < scene->light_count)
@@ -73,7 +75,7 @@ t_color	calculate_lighting(t_scene *scene, t_hit *hit)
 		if (!is_in_shadow(scene, hit->point, scene->lights[i].pos))
 		{
 			diffuse = calculate_diffuse(&scene->lights[i], hit->point,
-					hit->normal, hit->object->material.color);
+					hit->normal, object_color);
 			final_color = color_add(final_color, diffuse);
 		}
 		i++;

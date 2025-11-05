@@ -6,7 +6,7 @@
 /*   By: joao-alm <joao-alm@student.42luxembourg    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/03 18:28:29 by joao-alm          #+#    #+#             */
-/*   Updated: 2025/11/05 16:15:41 by joao-alm         ###   ########.fr       */
+/*   Updated: 2025/11/05 17:27:42 by joao-alm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,6 +64,7 @@ void	keyhook(t_mlx *mlx);
 void	render_scene(t_scene *scene, t_mlx *mlx);
 t_color	calculate_lighting(t_scene *scene, t_hit *hit);
 t_hit	find_closest_hit(t_ray *ray, t_scene *scene);
+t_color	get_pattern_color(t_hit *hit);
 
 /* Sphere */
 int		intersect_sphere(t_ray *ray, t_sphere *sphere, double *t);
