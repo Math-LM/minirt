@@ -12,6 +12,7 @@ Before jumping into the "fun part" (parsing and rendering), we'll need to unders
 
 A **Vector** is a quantity that as both **magnitude** (length) and **direction**.
 In 3D space a vector is usually written like this:
+
 ```
 v = (x, y, z)
 ```
@@ -51,3 +52,40 @@ t_vec3 vec_scale(t_vec3 v, double s)
     return (t_vec3){v.x * s, v.y * s, v.z * s};
 }
 ```
+Every axis of the `vector` is multiplied by the scaler `s`. A `vector a` (0, 1, 1) with an `s` of 3 would result in a vector (0, 3, 3)
+
+---
+
+### Dot Product
+
+The **dot product** can be calculated in two different ways:
+
+**Geometric Form**:
+
+```
+a · b = |a| |b| cos(θ)
+```
+
+Where `|a|` = length of a, `|b|` = length of b, and `θ`  = angle between a and b.
+
+**Component Form**:
+
+```
+a · b = a₁b₁ + a₂b₂ + a₃b₃
+```
+This is the one we will use in our program, since we already have all the required components.
+
+```c
+double vec_dot(t_vec3 a, t_vec3 b)
+{
+    return (a.x * b.x + a.y * b.y + a.z * b.z);
+}
+```
+
+The result will be a value that measures how aligned `vector a` and `vector b` are:
+- dot = 0: the vectors are *perpendicular**
+- dot > 0: the vectors point to **similar directions**
+- dot < 0: the vectors point to **opposite directions**
+
+---
+
