@@ -6,12 +6,12 @@
 /*   By: joao-alm <joao-alm@student.42luxembourg    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/03 19:48:28 by joao-alm          #+#    #+#             */
-/*   Updated: 2025/12/18 14:37:49 by joao-alm         ###   ########.fr       */
+/*   Updated: 2025/12/18 16:34:12 by joao-alm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "render_int.h"
 #include "mlx_util.h"
+#include "render_int.h"
 #include <math.h>
 
 /*

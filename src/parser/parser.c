@@ -6,14 +6,14 @@
 /*   By: joao-alm <joao-alm@student.42luxembourg    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/03 14:01:22 by joao-alm          #+#    #+#             */
-/*   Updated: 2025/12/18 15:23:23 by joao-alm         ###   ########.fr       */
+/*   Updated: 2025/12/18 16:23:44 by joao-alm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "lft_string.h"
 #include "lft_error.h"
-#include "lft_memory.h"
 #include "lft_gnl.h"
+#include "lft_memory.h"
+#include "lft_string.h"
 #include "parser_int.h"
 #include <fcntl.h>
 #include <stdlib.h>

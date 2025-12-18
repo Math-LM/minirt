@@ -6,16 +6,16 @@
 /*   By: joao-alm <joao-alm@student.42luxembourg    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/03 14:15:00 by joao-alm          #+#    #+#             */
-/*   Updated: 2025/12/18 14:31:28 by joao-alm         ###   ########.fr       */
+/*   Updated: 2025/12/18 16:23:26 by joao-alm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "lft_error.h"
-#include "lft_string.h"
-#include "lft_memory.h"
 #include "lft_conversion.h"
-#include <limits.h>
+#include "lft_error.h"
+#include "lft_memory.h"
+#include "lft_string.h"
 #include "parser_int.h"
+#include <limits.h>
 
 int	parse_ambient(char *line, t_scene *scene)
 {

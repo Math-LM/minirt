@@ -6,7 +6,7 @@
 /*   By: joao-alm <joao-alm@student.42luxembourg    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/05 14:54:43 by joao-alm          #+#    #+#             */
-/*   Updated: 2025/12/18 13:43:34 by joao-alm         ###   ########.fr       */
+/*   Updated: 2025/12/18 16:24:43 by joao-alm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,15 +73,16 @@ t_color	calculate_lighting(t_scene *scene, t_hit *hit, t_vec3 cam_pos,
 	bumped_normal = hit->normal;
 	if (hit->object->bump.enabled && hit->object->bump.img)
 		bumped_normal = apply_bump_map(mlx, hit);
-	calc = (t_light_calc){hit->point, bumped_normal, cam_pos, object_color, hit->object->phong};
+	calc = (t_light_calc){hit->point, bumped_normal, cam_pos, object_color,
+		hit->object->phong};
 	final_color = calculate_ambient(&scene->ambient, object_color);
 	i = -1;
 	while (++i < scene->light_count)
 	{
 		if (!is_in_shadow(scene, hit->point, &scene->lights[i]))
 		{
-			final_color = color_add(final_color,
-					calc_diff(&scene->lights[i], &calc));
+			final_color = color_add(final_color, calc_diff(&scene->lights[i],
+						&calc));
 			final_color = color_add(final_color,
 					calc_specular(&scene->lights[i], &calc));
 		}

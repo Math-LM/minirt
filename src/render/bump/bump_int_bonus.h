@@ -6,14 +6,14 @@
 /*   By: joao-alm <joao-alm@student.42luxembourg    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/18 14:07:24 by joao-alm          #+#    #+#             */
-/*   Updated: 2025/12/18 14:10:09 by joao-alm         ###   ########.fr       */
+/*   Updated: 2025/12/18 16:23:51 by joao-alm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef BUMP_INT_BONUS_H
-#define BUMP_INT_BONUS_H
+# define BUMP_INT_BONUS_H
 
-#include "../render_int.h"
+# include "../render_int.h"
 
 /* Normal */
 t_vec3	perturb_normal(t_vec3 normal, double height[3], double scale);

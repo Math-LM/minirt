@@ -6,13 +6,13 @@
 /*   By: joao-alm <joao-alm@student.42luxembourg    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/05 17:00:00 by joao-alm          #+#    #+#             */
-/*   Updated: 2025/12/18 14:32:12 by joao-alm         ###   ########.fr       */
+/*   Updated: 2025/12/18 16:23:30 by joao-alm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "parser_int.h"
-#include "lft_string.h"
 #include "lft_conversion.h"
+#include "lft_string.h"
+#include "parser_int.h"
 
 static void	parse_bump_option(char *value, t_object *obj)
 {
@@ -51,7 +51,10 @@ void	parse_material_options(char **params, int start_idx, t_object *obj)
 		{
 			*colon = '\0';
 			if (ft_strcmp(params[i], "pat") == 0)
+			{
 				ft_stod_valid(colon + 1, &obj->check.scale);
+				obj->check.enabled = 1;
+			}
 			else if (ft_strcmp(params[i], "bum") == 0)
 				parse_bump_option(colon + 1, obj);
 			else if (ft_strcmp(params[i], "txm") == 0)

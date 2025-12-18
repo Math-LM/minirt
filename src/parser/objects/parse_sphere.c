@@ -6,14 +6,14 @@
 /*   By: joao-alm <joao-alm@student.42luxembourg    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/18 10:16:28 by joao-alm          #+#    #+#             */
-/*   Updated: 2025/12/18 13:52:12 by joao-alm         ###   ########.fr       */
+/*   Updated: 2025/12/18 16:23:23 by joao-alm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "../parser_int.h"
 #include "lft_conversion.h"
 #include "lft_error.h"
 #include "lft_string.h"
-#include "../parser_int.h"
 
 static int	validate_sphere_params(char **params, t_object *obj)
 {

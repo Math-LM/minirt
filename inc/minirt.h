@@ -6,7 +6,7 @@
 /*   By: joao-alm <joao-alm@student.42luxembourg    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/03 18:28:29 by joao-alm          #+#    #+#             */
-/*   Updated: 2025/12/18 14:50:50 by joao-alm         ###   ########.fr       */
+/*   Updated: 2025/12/18 16:40:43 by joao-alm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,7 +58,7 @@ typedef struct s_scene
 void			parse_scene(char *filepath, t_scene *scene);
 
 /* Render */
-struct s_mlx;
+struct	s_mlx;
 void			render_scene(t_scene *scene, struct s_mlx *mlx);
 
 #endif

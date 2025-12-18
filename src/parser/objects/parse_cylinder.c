@@ -6,14 +6,14 @@
 /*   By: joao-alm <joao-alm@student.42luxembourg    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/18 10:08:55 by joao-alm          #+#    #+#             */
-/*   Updated: 2025/12/18 13:52:22 by joao-alm         ###   ########.fr       */
+/*   Updated: 2025/12/18 16:23:16 by joao-alm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "../parser_int.h"
 #include "lft_conversion.h"
 #include "lft_error.h"
 #include "lft_string.h"
-#include "../parser_int.h"
 
 static int	validate_cylinder_params(char **params, t_object *obj)
 {

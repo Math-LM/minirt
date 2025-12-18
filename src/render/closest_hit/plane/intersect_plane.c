@@ -6,12 +6,12 @@
 /*   By: joao-alm <joao-alm@student.42luxembourg    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/05 16:00:00 by joao-alm          #+#    #+#             */
-/*   Updated: 2025/12/18 13:46:21 by joao-alm         ###   ########.fr       */
+/*   Updated: 2025/12/18 16:24:22 by joao-alm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "vec3.h"
 #include "../closest_hit_int.h"
+#include "vec3.h"
 #include <math.h>
 
 /*

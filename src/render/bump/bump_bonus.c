@@ -6,7 +6,7 @@
 /*   By: joao-alm <joao-alm@student.42luxembourg    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/05 18:40:00 by joao-alm          #+#    #+#             */
-/*   Updated: 2025/12/18 14:11:07 by joao-alm         ###   ########.fr       */
+/*   Updated: 2025/12/18 16:23:48 by joao-alm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,10 +49,8 @@ static void	compute_bump_uv(t_hit *hit, double *u, double *v)
 static void	get_bump_heights(t_hit *hit, int xy[2], int wh[2], double h[3])
 {
 	h[0] = get_bump_height(hit->object->bump.img, xy[0], xy[1], wh);
-	h[1] = get_bump_height(hit->object->bump.img, xy[0] + 1, xy[1],
-			wh);
-	h[2] = get_bump_height(hit->object->bump.img, xy[0], xy[1] + 1,
-			wh);
+	h[1] = get_bump_height(hit->object->bump.img, xy[0] + 1, xy[1], wh);
+	h[2] = get_bump_height(hit->object->bump.img, xy[0], xy[1] + 1, wh);
 }
 
 t_vec3	apply_bump_map(void *mlx, t_hit *hit)
@@ -74,6 +72,5 @@ t_vec3	apply_bump_map(void *mlx, t_hit *hit)
 	xy[0] = (int)(uv[0] * wh[0]);
 	xy[1] = (int)(uv[1] * wh[1]);
 	get_bump_heights(hit, xy, wh, height);
-	return (perturb_normal(hit->normal, height,
-			hit->object->bump_scale));
+	return (perturb_normal(hit->normal, height, hit->object->bump_scale));
 }

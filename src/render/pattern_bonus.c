@@ -6,7 +6,7 @@
 /*   By: joao-alm <joao-alm@student.42luxembourg    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/05 17:10:00 by joao-alm          #+#    #+#             */
-/*   Updated: 2025/12/18 15:26:55 by joao-alm         ###   ########.fr       */
+/*   Updated: 2025/12/18 16:24:59 by joao-alm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,8 +39,32 @@ static void	compute_sphere_pattern_uv(t_hit *hit, double *u, double *v)
 	local_point = vec3_normalize(local_point);
 	theta = atan2(local_point.z, local_point.x);
 	phi = acos(local_point.y);
-	*u = theta / (2 * M_PI) * hit->object->check.scale;
+	*u = (theta + M_PI) / (2 * M_PI) * hit->object->check.scale;
 	*v = phi / M_PI * hit->object->check.scale;
+}
+
+static void	compute_cylinder_pattern_uv(t_hit *hit, double *u, double *v)
+{
+	t_vec3	local_point;
+	t_vec3	radial;
+	double	theta;
+	double	height;
+	double	radial_len;
+
+	local_point = vec3_sub(hit->point, hit->object->shape.cylinder.center);
+	height = vec3_dot(local_point, hit->object->shape.cylinder.axis);
+	radial = vec3_sub(local_point, vec3_scale(hit->object->shape.cylinder.axis,
+				height));
+	radial_len = sqrt(vec3_dot(radial, radial));
+	if (radial_len > 0.001)
+	{
+		radial = vec3_scale(radial, 1.0 / radial_len);
+		theta = atan2(radial.z, radial.x);
+		*u = (theta + M_PI) / (2 * M_PI) * hit->object->check.scale;
+	}
+	else
+		*u = 0;
+	*v = height * hit->object->check.scale;
 }
 
 t_color	get_pattern_color(t_hit *hit)
@@ -56,11 +80,13 @@ t_color	get_pattern_color(t_hit *hit)
 		compute_plane_pattern_uv(hit, &uv[0], &uv[1]);
 	else if (hit->object->type == OBJ_SPHERE)
 		compute_sphere_pattern_uv(hit, &uv[0], &uv[1]);
+	else if (hit->object->type == OBJ_CYLINDER || hit->object->type == OBJ_CONE)
+		compute_cylinder_pattern_uv(hit, &uv[0], &uv[1]);
 	else
 		return (base_color);
-	pattern[0] = (int)floor(uv[0]);
-	pattern[1] = (int)floor(uv[1]);
-	if (((pattern[0] + pattern[1]) % hit->object->check.enabled) == 0)
+	pattern[0] = (int)floor(uv[0] + 0.000001);
+	pattern[1] = (int)floor(uv[1] + 0.000001);
+	if (((pattern[0] + pattern[1]) % 2) == 0)
 		return (base_color);
 	return (invert_color(base_color));
 }

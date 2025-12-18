@@ -6,14 +6,14 @@
 /*   By: joao-alm <joao-alm@student.42luxembourg    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/03 14:20:00 by joao-alm          #+#    #+#             */
-/*   Updated: 2025/12/18 14:30:32 by joao-alm         ###   ########.fr       */
+/*   Updated: 2025/12/18 16:23:09 by joao-alm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "../parser_int.h"
 #include "lft_conversion.h"
 #include "lft_error.h"
 #include "lft_string.h"
-#include "../parser_int.h"
 
 static int	find_color_index(char **params)
 {

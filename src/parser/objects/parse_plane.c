@@ -6,14 +6,14 @@
 /*   By: joao-alm <joao-alm@student.42luxembourg    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/18 10:20:09 by joao-alm          #+#    #+#             */
-/*   Updated: 2025/12/18 14:30:59 by joao-alm         ###   ########.fr       */
+/*   Updated: 2025/12/18 16:23:20 by joao-alm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "../parser_int.h"
 #include "lft_conversion.h"
 #include "lft_error.h"
 #include "lft_string.h"
-#include "../parser_int.h"
 
 static int	validate_plane_params(char **params, t_object *obj)
 {

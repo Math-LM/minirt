@@ -6,12 +6,12 @@
 /*   By: joao-alm <joao-alm@student.42luxembourg    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/05 19:30:00 by joao-alm          #+#    #+#             */
-/*   Updated: 2025/12/18 14:36:47 by joao-alm         ###   ########.fr       */
+/*   Updated: 2025/12/18 16:24:50 by joao-alm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "texture_int_bonus.h"
 #include "mlx.h"
+#include "texture_int_bonus.h"
 
 static void	compute_texture_uv(t_hit *hit, double *u, double *v)
 {
@@ -54,8 +54,7 @@ t_color	get_texture_color(t_hit *hit)
 	int		xy[2];
 	int		wh[2];
 
-	if (!hit->object->texture.enabled
-		|| !hit->object->texture.img)
+	if (!hit->object->texture.enabled || !hit->object->texture.img)
 		return (hit->object->color);
 	wh[0] = hit->object->texture.width;
 	wh[1] = hit->object->texture.height;
@@ -65,6 +64,5 @@ t_color	get_texture_color(t_hit *hit)
 		return (hit->object->color);
 	xy[0] = (int)(uv[0] * wh[0]);
 	xy[1] = (int)(uv[1] * wh[1]);
-	return (sample_texture_at(hit->object->texture.img, xy[0], xy[1],
-			wh));
+	return (sample_texture_at(hit->object->texture.img, xy[0], xy[1], wh));
 }
